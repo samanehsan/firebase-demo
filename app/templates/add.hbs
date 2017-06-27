@@ -1,0 +1,18 @@
+<div>
+  Enter project guid: {{input type='text' value=guid}}
+  <button {{action 'search'}}>Search</button>
+</div>
+<br>
+{{#if node}}
+<h4>Preview:</h4>
+<p>Title: {{node.title}}</p>
+<p>Description: {{node.description}}</p>
+<p>Tags:</p>
+  <ul>
+    {{#each node.tags as |tag|}}
+      <li>{{tag}}</li>
+    {{/each}}
+  </ul>
+{{/if}}
+<br>
+<button {{action 'createPage'}}>Create Page</button>
