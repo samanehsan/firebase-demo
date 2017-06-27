@@ -10,7 +10,16 @@ export default Ember.Controller.extend({
       });
     },
     createPage() {
-
+      var node = this.get('node');
+      var data = {
+        title: node.get('title'),
+        description: node.get('description'),
+        tags: node.get('tags').join(', ')
+      };
+      var page = this.store.createRecord('page', data);
+      page.save().then((res) => {
+        this.transitionToRoute('page', page.id);
+      })
     }
   }
 
